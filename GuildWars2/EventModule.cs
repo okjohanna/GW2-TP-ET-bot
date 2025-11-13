@@ -132,7 +132,7 @@ namespace Cat_Bot.GuildWars2
                 DateTime localEventStart = CalculateNextEventTime(eventItem, localCurrentTime);
                 TimeSpan timeRemaining = localEventStart - localCurrentTime;
 
-                // Checking if event starts in less than 30 min
+                // Check if event starts in less than 30 min
                 if (!filterNext30Minutes || timeRemaining.TotalMinutes <= 30 && timeRemaining.TotalMinutes >= 0)
                 {
                     eventList.Add((eventItem, localEventStart));

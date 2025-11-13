@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GuildWars2\EventModule.cs" />
+    <Compile Include="GuildWars2\TradingPost.cs" />
     <Compile Include="Images\Cats.cs" />
     <Compile Include="Commands\Slash\BasicSC.cs" />
     <Compile Include="config\JSONReader.cs" />
