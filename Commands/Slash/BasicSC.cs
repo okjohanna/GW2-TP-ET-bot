@@ -78,5 +78,16 @@ namespace Cat_Bot.Commands.Slash
             await ctx.DeferAsync();
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent("Pong!"));
         }
+
+        [SlashCommand("tp", "Shows the Trading Post price of an item by ID.")]
+        public async Task SlashCommandTp(InteractionContext ctx,
+            [Option("id", "The item ID (e.g., 19721 for Glob of Ectoplasm)")] long itemId)
+        {
+            await ctx.DeferAsync();
+
+            var embed = await TradingPost.GetListingEmbedAsync((int)itemId);
+
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+        }
     }
 }
