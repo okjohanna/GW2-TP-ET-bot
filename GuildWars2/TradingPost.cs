@@ -61,12 +61,20 @@ namespace Cat_Bot.GuildWars2
                 string silverIcon = CoinIcons.Silver ?? "";
                 string copperIcon = CoinIcons.Copper ?? "";
 
+                // Always show coins in descending order, skip zero values except for copper
+                var result = "";
+                var zwsp = "\u200B";
+
                 if (gold > 0)
-                    return $"{gold} [ ]({goldIcon}) {silver:D2} [ ]({silverIcon}) {copperLeft:D2} [ ]({copperIcon})";
-                else if (silver > 0)
-                    return $"{silver} [ ]({silverIcon}) {copperLeft:D2} [ ]({copperIcon})";
-                else
-                    return $"{copperLeft} [ ]({copperIcon})";
+                    result += $"{gold} [{zwsp}]({goldIcon}) ";
+                if (silver > 0)
+                    result += $"{silver} [{zwsp}]({silverIcon}) ";
+
+                // Always show copper if it's non-zero OR nothing else was added
+                if (copperLeft > 0 || (gold == 0 && silver == 0))
+                    result += $"{copperLeft} [{zwsp}]({copperIcon})";
+
+                return result.Trim();
             }
         }
 
@@ -121,8 +129,8 @@ namespace Cat_Bot.GuildWars2
             var embed = new DiscordEmbedBuilder()
                 .WithTitle(item.Name)
                 .WithThumbnail(item.Icon)
-                .AddField("Sell Price", sell, true)
-                .AddField("Buy Price", buy, true)
+                .AddField("Sell Price", sell)
+                .AddField("Buy Price", buy)
                 .WithColor(DiscordColor.Gold);
 
             return embed.Build();
