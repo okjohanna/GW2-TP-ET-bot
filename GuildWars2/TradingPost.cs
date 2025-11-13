@@ -1,33 +1,30 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net.Http;
-using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cat_Bot.Cats
+namespace Cat_Bot.GuildWars2
 {
-    internal class RandomCats
+    internal class TradingPost
     {
-        public static async Task<string> GetRandomCatAsync()
+        public static async Task<string> GetTradeInfoAsync()
         {
-            string catUrl = "http://127.0.0.1:8000/cat";
-            
+            string baseUrl = "https://api.guildwars2.com/v2/commerce/listings?ids="; //19721 - glob of ectoplasm
+
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync(catUrl);
+                    HttpResponseMessage response = await client.GetAsync(baseUrl);
                     response.EnsureSuccessStatusCode();
 
                     string responseBody = await response.Content.ReadAsStringAsync();
-
                     dynamic result = JsonConvert.DeserializeObject(responseBody);
 
-                    return result.url;
+                    return result.unit_price;
                 }
                 catch (HttpRequestException e)
                 {

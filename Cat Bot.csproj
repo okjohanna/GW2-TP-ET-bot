@@ -6,6 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FE7E6257-27ED-40B6-A5D1-5684EFD31EE2}</ProjectGuid>
     <OutputType>Exe</OutputType>
+	<LangVersion>12.0</LangVersion>
     <RootNamespace>Cat_Bot</RootNamespace>
     <AssemblyName>Cat Bot</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
