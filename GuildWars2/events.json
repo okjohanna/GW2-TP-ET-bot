@@ -1,0 +1,62 @@
+[
+  {
+    "name": "The Gang War of Echovald",
+    "type": "meta event",
+    "waypoint": "[&BMwMAAA=]",
+    "time": {
+      "hourInitial": 0,
+      "hourMultiplier": 2,
+      "minuteOffset": 30
+    }
+  },
+  {
+    "name": "Casino Blitz",
+    "type": "group event",
+    "waypoint": "[&BLsKAAA=]",
+    "time": {
+      "hourInitial": 2,
+      "hourMultiplier": 2,
+      "minuteOffset": 5
+    }
+  },
+  {
+    "name": "The Battle of the Jade Sea",
+    "type": "meta event",
+    "waypoint": "[&BKIMAAA=]",
+    "time": {
+      "hourInitial": 1,
+      "hourMultiplier": 2,
+      "minuteOffset": 0
+    }
+  },
+  {
+    "name": "Hammerhart Rumble!",
+    "type": "group event",
+    "waypoint": "[&BJEPAAA=]",
+    "time": {
+      "hourInitial": 0,
+      "hourMultiplier": 2,
+      "minuteOffset": 40
+    }
+  },
+  {
+    "name": "Secrets of the Weald",
+    "type": "meta event",
+    "waypoint": "[&BJ4PAAA=]",
+    "time": {
+      "hourInitial": 1,
+      "hourMultiplier": 2,
+      "minuteOffset": 40
+    }
+  },
+  {
+    "name": "Dragonstorm",
+    "type": "group event",
+    "waypoint": "[&BJ4PAAA=]",
+    "time": {
+      "hourInitial": 1,
+      "hourMultiplier": 2,
+      "minuteOffset": 0
+    }
+  }
+]
