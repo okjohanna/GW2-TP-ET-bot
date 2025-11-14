@@ -25,9 +25,9 @@ namespace Cat_Bot.Commands.Slash
         {
             await ctx.DeferAsync();
 
-            string randomCat = await RandomCats.GetRandomCatAsync();
+            DiscordEmbed randomCat = await RandomCats.GetRandomCatAsync(ctx);
 
-            await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent(randomCat));
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(randomCat));
         }
 
         [SlashCommand("waifu", "Sends a random waifu GIF.")]

@@ -1,4 +1,5 @@
-﻿using Cat_Bot.Cats;
+﻿
+using Cat_Bot.Cats;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

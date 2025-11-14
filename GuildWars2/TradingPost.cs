@@ -17,7 +17,8 @@ namespace Cat_Bot.GuildWars2
             BaseAddress = new Uri("https://api.guildwars2.com/v2/")
         };
 
-        // -------- Coin icons
+        // -------- Coin icons (DISCORD EMBED CAN NOT SHOW THESE!!
+        /*
         public static class CoinIcons
         {
             public static string Gold {  get; private set; }
@@ -47,7 +48,7 @@ namespace Cat_Bot.GuildWars2
                 }
             }
         }
-
+        */
         // -------- Money Formatter
         public static class Gw2MoneyFormatter
         {
@@ -56,23 +57,23 @@ namespace Cat_Bot.GuildWars2
                 int gold = copper / 10000;
                 int silver = (copper % 10000) / 100;
                 int copperLeft = copper % 100;
-
+                /*
                 string goldIcon = CoinIcons.Gold ?? "";
                 string silverIcon = CoinIcons.Silver ?? "";
                 string copperIcon = CoinIcons.Copper ?? "";
+                */
 
                 // Always show coins in descending order, skip zero values except for copper
                 var result = "";
-                var zwsp = "\u200B";
 
                 if (gold > 0)
-                    result += $"{gold} [{zwsp}]({goldIcon}) ";
+                    result += $"{gold} <:gold_coin:1438800249589076110>";
                 if (silver > 0)
-                    result += $"{silver} [{zwsp}]({silverIcon}) ";
+                    result += $"{silver} <:silver_coin:1438800104738918420>";
 
                 // Always show copper if it's non-zero OR nothing else was added
                 if (copperLeft > 0 || (gold == 0 && silver == 0))
-                    result += $"{copperLeft} [{zwsp}]({copperIcon})";
+                    result += $"{copperLeft} <:copper_coin:1438800276411777144>";
 
                 return result.Trim();
             }
@@ -92,8 +93,8 @@ namespace Cat_Bot.GuildWars2
         private class Gw2Price
         {
             public int Id {  get; set; }
-            public Gw2Offer Buy { get; set; } = new Gw2Offer();
-            public Gw2Offer Sell { get; set; } = new Gw2Offer();
+            public Gw2Offer Buys { get; set; } = new Gw2Offer();
+            public Gw2Offer Sells { get; set; } = new Gw2Offer();
         }
         
         private class Gw2Offer
@@ -112,7 +113,6 @@ namespace Cat_Bot.GuildWars2
         // -------- Fetch listing & item info
         public static async Task<DiscordEmbed> GetListingEmbedAsync(int itemId)
         {
-            await CoinIcons.InitializeAsync();
 
             var price = await GetPriceAsync(itemId);
             var item = await GetItemAsync(itemId);
@@ -123,8 +123,8 @@ namespace Cat_Bot.GuildWars2
                 return null;
             }
 
-            string sell = Gw2MoneyFormatter.FormatWithIcons(price.Sell.Unit_Price);
-            string buy = Gw2MoneyFormatter.FormatWithIcons(price.Buy.Unit_Price);
+            string sell = Gw2MoneyFormatter.FormatWithIcons(price.Sells.Unit_Price);
+            string buy = Gw2MoneyFormatter.FormatWithIcons(price.Buys.Unit_Price);
 
             var embed = new DiscordEmbedBuilder()
                 .WithTitle(item.Name)
@@ -140,8 +140,8 @@ namespace Cat_Bot.GuildWars2
         {
             try
             {
-                string json = await http.GetStringAsync($"commerce/prices/{itemId}");
-                return JsonConvert.DeserializeObject<Gw2Price>(json);
+                string result = await http.GetStringAsync($"commerce/prices/{itemId}");
+                return JsonConvert.DeserializeObject<Gw2Price>(result);
             }
             catch
             {
