@@ -17,7 +17,7 @@ namespace Cat_Bot.GuildWars2
             BaseAddress = new Uri("https://api.guildwars2.com/v2/")
         };
 
-        // -------- Coin icons (DISCORD EMBED CAN NOT SHOW THESE!!
+        // -------- Coin icons (DISCORD EMBED IS NOT ABLE TO DISPLAY THESE!!
         /*
         public static class CoinIcons
         {
@@ -49,6 +49,8 @@ namespace Cat_Bot.GuildWars2
             }
         }
         */
+
+
         // -------- Money Formatter
         public static class Gw2MoneyFormatter
         {
@@ -83,6 +85,7 @@ namespace Cat_Bot.GuildWars2
         // https://api.guildwars2.com/v2/commerce/listings?ids=19721
         // https://api.guildwars2.com/v2/items?ids=96978
 
+
         // -------- Models
         private class Gw2File
         {
@@ -109,6 +112,7 @@ namespace Cat_Bot.GuildWars2
             public string Name { get; set; } = "";
             public string Icon { get; set; } = "";
         }
+
 
         // -------- Fetch listing & item info
         public static async Task<DiscordEmbed> GetListingEmbedAsync(int itemId)
@@ -186,6 +190,5 @@ namespace Cat_Bot.GuildWars2
             }
         }
         */
-
-    }
+}
 
