@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Cat_Bot.GuildWars2
 {
-    // Represents time-related details for an event
+    // Represent time-related details for an event
     public class EventTime
     {
         public int HourInitial { get; set; }
@@ -15,7 +15,7 @@ namespace Cat_Bot.GuildWars2
         public int MinuteOffset { get; set; }
     }
 
-    // Represents an event's details
+    // Represent an event's details
     public class Event
     {
         public string Name { get; set; }
@@ -55,14 +55,14 @@ namespace Cat_Bot.GuildWars2
             }
         }
 
-        // Gets the local current time based on the configured time zone
+        // Get the local current time based on the configured time zone
         private static DateTime GetLocalCurrentTime()
         {
             DateTime utcNow = DateTime.UtcNow;
             return TimeZoneInfo.ConvertTimeFromUtc(utcNow, TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time"));
         }
         
-        // Calculates the next occurrence of an event based on the current time
+        // Calculate the next occurrence of an event based on the current time
         private static DateTime CalculateNextEventTime(Event eventItem, DateTime currentTime)
         {
             DateTime eventStart = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day,
@@ -78,7 +78,7 @@ namespace Cat_Bot.GuildWars2
             return eventStart;
         }
         /*
-        // Formats the upcoming events into a readable string
+        // Format the upcoming events into a readable string
         public static string GetUpcomingEventsInfo()
         {
             DateTime localCurrentTime = GetLocalCurrentTime();
@@ -115,7 +115,7 @@ namespace Cat_Bot.GuildWars2
             var embedBuilder = new DiscordEmbedBuilder
             {
                 Title = "Event timers",
-                Color = DiscordColor.Violet,
+                Color = DiscordColor.Orange,
                 Description = $"Timers for Guild Wars 2 group events that I care about.\n" +
                               $"These are the real fun ones frfr :100::100:\n" +
                               $"All times are displayed in `{timezoneAbbreviation}`.\n\n" +

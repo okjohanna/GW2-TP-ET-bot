@@ -135,7 +135,7 @@ namespace Cat_Bot.GuildWars2
                 .WithThumbnail(item.Icon)
                 .AddField("Sell Price", sell)
                 .AddField("Buy Price", buy)
-                .WithColor(DiscordColor.Gold);
+                .WithColor(DiscordColor.Orange);
 
             return embed.Build();
         }
