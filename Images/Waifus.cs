@@ -78,14 +78,12 @@ namespace Cat_Bot.Images
 
                     // Extract the URL of the image from the response
                     return result.url;
-
                 }
                 catch (HttpRequestException e)
                 {
                     Console.WriteLine("Request error: " + e.Message);
                     return null;
                 }
-
             }
         }
 
@@ -105,7 +103,6 @@ namespace Cat_Bot.Images
                     dynamic result = JsonConvert.DeserializeObject(responseBody);
 
                     return result.url;
-
                 }
                 catch (HttpRequestException e)
                 {

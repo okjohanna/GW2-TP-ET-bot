@@ -56,6 +56,7 @@ namespace Cat_Bot.Cats
 
         public static async Task<DiscordEmbed> GetRandomCatAsync(InteractionContext ctx)
         {
+            // URL of the local FastAPI server endpoint
             string catURL = "http://127.0.0.1:8000/cat";
             
             using (HttpClient client = new HttpClient())
