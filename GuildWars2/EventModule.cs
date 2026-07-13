@@ -77,35 +77,7 @@ namespace Cat_Bot.GuildWars2
 
             return eventStart;
         }
-        /*
-        // Format the upcoming events into a readable string
-        public static string GetUpcomingEventsInfo()
-        {
-            DateTime localCurrentTime = GetLocalCurrentTime();
-            string timezoneAbbreviation = "UTC+2"; // You can modify this if necessary
-            var eventDetails = new List<string>();
 
-            foreach (var eventItem in _events)
-            {
-                DateTime localEventStart = CalculateNextEventTime(eventItem, localCurrentTime);
-                TimeSpan timeRemaining = localEventStart - localCurrentTime;
-
-                string eventDetail = FormatEventDetails(eventItem, localEventStart, timeRemaining, timezoneAbbreviation);
-                eventDetails.Add(eventDetail);
-            }
-
-            return string.Join("\n", eventDetails);
-        }
-
-        // Formats a single event's details into a string
-        private static string FormatEventDetails(Event eventItem, DateTime localEventStart, TimeSpan timeRemaining, string timezoneAbbreviation)
-        {
-            return $"*{eventItem.Name}*\n" +
-                   $"Waypoint: {eventItem.Waypoint}\n" +
-                   $"Next event time ({timezoneAbbreviation}): {localEventStart:HH:mm}\n" +
-                   $"Time remaining: {timeRemaining.Hours} hours, {timeRemaining.Minutes} minutes\n";
-        }
-        */
         // Embed test
         public static DiscordEmbed GetUpcomingEventsEmbed(bool filterNext30Minutes = false)
         {
@@ -161,8 +133,9 @@ namespace Cat_Bot.GuildWars2
                     $"*Carry on.*"
                 );
             }
-           
-            return embedBuilder.Build(); // Finalize and return the embed
+
+            // Finalize and return the embed
+            return embedBuilder.Build();
         }
     }
 }

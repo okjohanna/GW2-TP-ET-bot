@@ -36,44 +36,13 @@ namespace Cat_Bot
 
             //Task Handler Ready event
             Client.Ready += Client_Ready;
-            /*
-            var commandsConfig = new CommandsNextConfiguration()
-            {
-                StringPrefixes = new string[] { jsonReader.prefix },
-                EnableMentionPrefix = true,
-                EnableDefaultHelp = false,
-                EnableDms = true
-            };
 
-            Commands = Client.UseCommandsNext(commandsConfig);
-            */
             // Set up slash commands
             var slashCommandsConfig = Client.UseSlashCommands();
             slashCommandsConfig.RegisterCommands<BasicSC>();
 
-            //Lavalink Configuration (necessary for the bot to play audio)
-            /*
-            var endpoint = new ConnectionEndpoint
-            {
-                Hostname = "lava-v3.ajieblogs.eu.org",
-                Port = 443,
-                Secured = true
-            };
-
-            //Lavalink Config that will allow us to connect to the host above
-            var lavalinkConfig = new LavalinkConfiguration
-            {
-                Password = "https://dsc.gg/ajidevserver",
-                RestEndpoint = endpoint,
-                SocketEndpoint = endpoint
-            };
-
-            var lavalink = Client.UseLavalink();
-
-            */
             // Connect to get the Bot online
             await Client.ConnectAsync();
-            //await lavalink.ConnectAsync(lavalinkConfig);
             await Task.Delay(-1);
         }
 

@@ -9,6 +9,7 @@ namespace Cat_Bot.Quotes
     {
         public static async Task<string> GetQuoteAsync()
         {
+            // URL of the local FastAPI server endpoint
             string quoteURL = "http://127.0.0.1:8000/quote";
 
             using (HttpClient client = new HttpClient())
