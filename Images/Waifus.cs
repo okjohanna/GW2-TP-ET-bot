@@ -60,6 +60,7 @@ namespace Cat_Bot.Images
 
         public static async Task<string> GetWaifuAsync()
         {
+            // WAIFU API IS DOWN INDEFINITELY! =( Need to replace these with another source
             string baseURL = "https://api.waifu.pics/sfw/";
             string waifuURL = baseURL + GetRandomWaifuCategory();
 
@@ -89,6 +90,7 @@ namespace Cat_Bot.Images
 
         public static async Task<string> GetSmugWaifuAsync()
         {
+            // WAIFU API IS DOWN INDEFINITELY! =( Need to replace these with another source
             string smugWaifuURL = "https://api.waifu.pics/sfw/smug";
 
             using (HttpClient client = new HttpClient())

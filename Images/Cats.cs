@@ -5,7 +5,6 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace Cat_Bot.Cats
 {
     internal class RandomCats
