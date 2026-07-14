@@ -17,39 +17,6 @@ namespace Cat_Bot.GuildWars2
             BaseAddress = new Uri("https://api.guildwars2.com/v2/")
         };
 
-        // -------- Coin icons (DISCORD EMBED IS NOT ABLE TO DISPLAY THESE!!)
-        /*
-        public static class CoinIcons
-        {
-            public static string Gold {  get; private set; }
-            public static string Silver { get; private set; }
-            public static string Copper { get; private set; }
-            private static bool _loaded = false;
-
-            public static async Task InitializeAsync()
-            {
-                if (_loaded) return;
-
-                try
-                {
-                    string url = "files?ids=ui_coin_gold,ui_coin_silver,ui_coin_copper";
-                    string response = await http.GetStringAsync(url);
-                    var files = JsonConvert.DeserializeObject<List<Gw2File>>(response);
-
-                    Gold = files?.Find(f => f.Id == "ui_coin_gold")?.Icon;
-                    Silver = files?.Find(f => f.Id == "ui_coin_silver")?.Icon;
-                    Copper = files?.Find(f => f.Id == "ui_coin_copper")?.Icon;
-
-                    _loaded = true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Request error: " + e.Message);
-                }
-            }
-        }
-        */
-
         // -------- Money Formatter
         public static class Gw2MoneyFormatter
         {
@@ -58,19 +25,14 @@ namespace Cat_Bot.GuildWars2
                 int gold = copper / 10000;
                 int silver = (copper % 10000) / 100;
                 int copperLeft = copper % 100;
-                /*
-                string goldIcon = CoinIcons.Gold ?? "";
-                string silverIcon = CoinIcons.Silver ?? "";
-                string copperIcon = CoinIcons.Copper ?? "";
-                */
 
                 // Always show coins in descending order, skip zero values except for copper
                 var result = "";
 
                 if (gold > 0)
-                    result += $"{gold} <:gold_coin:1438800249589076110>";
+                    result += $"{gold} <:gold_coin:1438800249589076110>"; // These are custom Discord emojis, replace with your own emoji IDs
                 if (silver > 0)
-                    result += $"{silver} <:silver_coin:1438800104738918420>";
+                    result += $"{silver} <:silver_coin:1438800104738918420>"; 
 
                 // Always show copper if it's non-zero OR nothing else was added
                 if (copperLeft > 0 || (gold == 0 && silver == 0))
@@ -143,8 +105,14 @@ namespace Cat_Bot.GuildWars2
                 string result = await http.GetStringAsync($"commerce/prices/{itemId}");
                 return JsonConvert.DeserializeObject<Gw2Price>(result);
             }
-            catch
+            catch (HttpRequestException e)
             {
+                Console.WriteLine($"Error fetching price for item {itemId}: {e.Message}");
+                return null;
+            }
+            catch (JsonException e)
+            {
+                Console.WriteLine($"Failed to parse price data for item {itemId}: {e.Message}");
                 return null;
             }
         }
@@ -156,8 +124,14 @@ namespace Cat_Bot.GuildWars2
                 string json = await http.GetStringAsync($"items/{itemId}");
                 return JsonConvert.DeserializeObject<Gw2Item>(json);
             }
-            catch
+            catch (HttpRequestException e)
             {
+                Console.WriteLine($"Error fetching item {itemId}: {e.Message}");
+                return null;
+            }
+            catch (JsonException e)
+            {
+                Console.WriteLine($"Failed to parse item data for item {itemId}: {e.Message}");
                 return null;
             }
         }
