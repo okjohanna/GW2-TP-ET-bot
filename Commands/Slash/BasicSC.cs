@@ -30,6 +30,8 @@ namespace Cat_Bot.Commands.Slash
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(randomCat));
         }
 
+        /*
+         * WAIFU API IS DOWN INDEFINITELY! =( Need to replace these with another source
         [SlashCommand("waifu", "Sends a random waifu GIF.")]
         public async Task SlashCommandWaifu(InteractionContext ctx)
         {
@@ -49,6 +51,7 @@ namespace Cat_Bot.Commands.Slash
 
             await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent(randomSmugWaifu));
         }
+        */
 
         [SlashCommand("et", "Lists all the upcoming group events in Guild Wars 2 that I care about.")]
         public async Task SlashCommandEt(InteractionContext ctx)
